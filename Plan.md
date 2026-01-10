@@ -227,7 +227,7 @@ web-editor-backend/
 - Synology NAS에서 `docker compose`로 운영
 - 외부 접속은 NAS 리버스 프록시(선택) 또는 compose에서 포트 노출
 - 권장 포트:
-  - frontend: 3000
+  - frontend: 3001
   - backend: 8000
 
 ## 8.2 docker-compose 예시(배포 서버에 별도 디렉토리로 관리)

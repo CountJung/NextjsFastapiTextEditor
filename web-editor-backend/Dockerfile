@@ -5,10 +5,17 @@ WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 
+# 1 = install HWP support (pyhwp/hwp5txt). Keep it on by default for NAS/Linux usage.
+ARG INSTALL_HWP=1
+
 COPY pyproject.toml /app/pyproject.toml
 
 RUN pip install --no-cache-dir -U pip \
-  && pip install --no-cache-dir .
+  && if [ "$INSTALL_HWP" = "1" ]; then \
+       pip install --no-cache-dir ".[hwp]"; \
+     else \
+       pip install --no-cache-dir .; \
+     fi
 
 COPY app /app/app
 

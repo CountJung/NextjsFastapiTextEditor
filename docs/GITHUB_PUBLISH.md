@@ -33,11 +33,17 @@ PR/Push 시 자동으로 빌드/테스트가 수행됩니다.
 환경변수 예시:
 
 - backend
-  - `CORS_ALLOW_ORIGINS=http://<NAS-DOMAIN>:3000,http://<NAS-DOMAIN>:3001`
+  - `CORS_ALLOW_ORIGINS=http://<NAS-DOMAIN>:3001`
 - frontend
   - `NEXT_PUBLIC_API_BASE_URL=http://<NAS-DOMAIN>:8000`
+
+### HWP 변환(리눅스 컨테이너)
+
+- 백엔드 Docker 이미지는 기본적으로 `pyhwp`를 포함하도록 구성되어 있습니다.
+- 실제 HWP 변환은 Linux에서 `hwp5txt` CLI를 호출해 텍스트를 추출합니다.
+- Windows 로컬에서는 HWP 변환이 동작하지 않으며(의도된 제한), API는 `501 NOT_IMPLEMENTED` envelope로 응답합니다.
 
 ## 4) 로컬에서 확인
 
 - backend: `http://localhost:8000/api/health`
-- frontend: `http://localhost:3000` (충돌 시 3001)
+- frontend: `http://localhost:3001`

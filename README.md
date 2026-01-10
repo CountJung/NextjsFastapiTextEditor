@@ -33,9 +33,7 @@ npm install
 npm run dev
 ```
 
-확인: `http://localhost:3000`
-
-참고: 개발 환경에서 3000 포트가 사용 중이면 Next.js가 3001로 자동 변경될 수 있습니다.
+확인: `http://localhost:3001`
 
 ## GitHub 게시/배포(요약)
 
@@ -52,7 +50,10 @@ npm run dev
 docker compose up --build
 ```
 
+참고: 백엔드 Docker 이미지는 NAS(리눅스)에서 HWP 텍스트 추출(`pyhwp`/`hwp5txt`)이 가능하도록 기본 세팅되어 있습니다.
+
 - Frontend: `http://localhost:3000`
+- Frontend: `http://localhost:3001`
 - Backend: `http://localhost:8000/api/health`
 
 ## 빠른 검증 체크리스트
@@ -68,6 +69,6 @@ docker compose up --build
 
 3) Frontend UI
 
-- `http://localhost:3000`에서 파일 선택 → 변환 → 에디터에 내용 표시
+- `http://localhost:3001`에서 파일 선택 → 변환 → 에디터에 내용 표시
 - 우측 상단 버튼으로 테마(system/light/dark) 순환 및 localStorage 저장 확인
 

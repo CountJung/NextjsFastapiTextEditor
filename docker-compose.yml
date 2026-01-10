@@ -7,7 +7,7 @@ services:
       - "8000:8000"
     environment:
       - APP_ENV=prod
-      - CORS_ALLOW_ORIGINS=http://localhost:3000
+      - CORS_ALLOW_ORIGINS=http://localhost:3000,http://localhost:3001
       - MAX_UPLOAD_MB=20
     restart: unless-stopped
 
@@ -16,7 +16,7 @@ services:
       context: ./web-editor-frontend
     container_name: web-editor-frontend
     ports:
-      - "3000:3000"
+      - "3001:3000"
     environment:
       - NEXT_PUBLIC_API_BASE_URL=http://localhost:8000
     depends_on:
