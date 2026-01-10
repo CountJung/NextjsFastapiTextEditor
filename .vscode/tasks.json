@@ -1,0 +1,49 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "backend: uvicorn (reload)",
+      "type": "shell",
+      "command": "python",
+      "args": [
+        "-m",
+        "uvicorn",
+        "app.main:app",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8000",
+        "--reload"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/web-editor-backend",
+        "env": {
+          "CORS_ALLOW_ORIGINS": "http://localhost:3000,http://localhost:3001",
+          "MAX_UPLOAD_MB": "20"
+        }
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "frontend: next dev",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "dev", "--", "--port", "3001"],
+      "options": {
+        "cwd": "${workspaceFolder}/web-editor-frontend",
+        "env": {
+          "NEXT_PUBLIC_API_BASE_URL": "http://localhost:8000"
+        }
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "backend: smoke convert",
+      "type": "shell",
+      "command": "${workspaceFolder}/web-editor-backend/.venv/Scripts/python.exe",
+      "args": ["${workspaceFolder}/web-editor-backend/scripts/smoke_convert.py", "http://127.0.0.1:8000"],
+      "problemMatcher": [],
+      "group": "test"
+    }
+  ]
+}

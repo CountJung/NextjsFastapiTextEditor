@@ -1,0 +1,56 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Backend: FastAPI (uvicorn)",
+      "type": "python",
+      "request": "launch",
+      "module": "uvicorn",
+      "cwd": "${workspaceFolder}/web-editor-backend",
+      "args": [
+        "app.main:app",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8000",
+        "--reload"
+      ],
+      "env": {
+        "CORS_ALLOW_ORIGINS": "http://localhost:3000,http://localhost:3001",
+        "MAX_UPLOAD_MB": "20"
+      },
+      "justMyCode": true
+    },
+    {
+      "name": "Frontend: Next.js (Node Inspect)",
+      "type": "pwa-node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/web-editor-frontend",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--", "--port", "3001"],
+      "env": {
+        "NEXT_PUBLIC_API_BASE_URL": "http://localhost:8000",
+        "NODE_OPTIONS": "--inspect=9229"
+      },
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "Frontend: Chrome (Client)",
+      "type": "pwa-chrome",
+      "request": "launch",
+      "url": "http://localhost:3001",
+      "webRoot": "${workspaceFolder}/web-editor-frontend",
+      "runtimeArgs": ["--remote-debugging-port=9222"]
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Dev: Frontend + Backend",
+      "configurations": [
+        "Backend: FastAPI (uvicorn)",
+        "Frontend: Next.js (Node Inspect)"
+      ]
+    }
+  ]
+}
