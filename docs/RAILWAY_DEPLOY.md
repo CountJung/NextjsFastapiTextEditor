@@ -15,6 +15,13 @@
 - Build: Dockerfile 자동 감지
 - Start: Dockerfile CMD가 `PORT`를 자동으로 사용
 
+문제 해결 팁(자주 발생)
+
+- 빌드 로그에 `start.sh not found` / `could not determine how to build`가 보이면,
+  Railway 서비스의 **Root Directory가 repo 루트로 잡혀있는지** 확인하세요.
+  - 해결 1(권장): Root Directory를 `web-editor-backend/`로 설정
+  - 해결 2: repo 루트의 `Dockerfile`을 사용(모노레포용). 이 경우 backend 서비스는 `TARGET=backend`(기본값).
+
 필수 환경변수(예시)
 
 - `MAX_UPLOAD_MB=20`
@@ -36,6 +43,12 @@
 참고
 
 - `NEXT_PUBLIC_*` 값은 Next 빌드 시점에 주입될 수 있으므로, Railway에서 env 변경 후 재배포가 필요할 수 있습니다.
+
+문제 해결 팁(자주 발생)
+
+- 빌드 로그에 `start.sh not found` / `could not determine how to build`가 보이면,
+  Root Directory가 `web-editor-frontend/`로 설정되어 있는지 확인하세요.
+  - repo 루트 `Dockerfile`을 쓰는 경우, frontend 서비스는 `TARGET=frontend` 빌드 설정이 필요합니다.
 
 ## 4) HWP 지원(리눅스)
 
