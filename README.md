@@ -4,6 +4,8 @@ Frontend(Next.js) / Backend(FastAPI) 분리 구조의 로컬 개발 + Docker 배
 
 GitHub에 게시(공개/비공개 모두)해도 CI/도커/로컬 실행에 무리가 없도록 구성되어 있습니다.
 
+배포는 **Railway(자동 감지/자동 배포)** 를 우선 목표로 합니다.
+
 ## 폴더 구조
 
 - `web-editor-frontend/`: Next.js(TypeScript) + MUI + TipTap
@@ -35,14 +37,12 @@ npm run dev
 
 확인: `http://localhost:3001`
 
-## GitHub 게시/배포(요약)
+## Railway 배포(요약)
 
 - CI: PR/Push 시 `frontend-ci`, `backend-ci`가 자동 실행됩니다.
-- Docker 이미지: `main` 브랜치 push 시 GHCR로 이미지를 푸시합니다.
-	- `ghcr.io/<OWNER>/<REPO>/web-editor-backend:latest`
-	- `ghcr.io/<OWNER>/<REPO>/web-editor-frontend:latest`
+- Railway: GitHub 연동 후 push를 감지하여 서비스가 자동 배포됩니다.
 
-자세한 절차는 [docs/GITHUB_PUBLISH.md](docs/GITHUB_PUBLISH.md) 참고.
+자세한 절차는 [docs/RAILWAY_DEPLOY.md](docs/RAILWAY_DEPLOY.md) 참고.
 
 ## Docker Compose
 

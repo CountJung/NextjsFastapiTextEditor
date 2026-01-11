@@ -19,4 +19,7 @@ COPY --from=build /app/node_modules /app/node_modules
 COPY --from=build /app/public /app/public
 
 EXPOSE 3000
+
+# Railway sets $PORT; Next.js respects it when start has no fixed -p.
 CMD ["npm", "run", "start"]
+

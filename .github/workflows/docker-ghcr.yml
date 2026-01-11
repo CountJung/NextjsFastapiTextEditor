@@ -1,14 +1,6 @@
 name: docker-ghcr
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'web-editor-frontend/**'
-      - 'web-editor-backend/**'
-      - 'docker-compose.yml'
-      - '.github/workflows/docker-ghcr.yml'
   workflow_dispatch:
 
 permissions:
