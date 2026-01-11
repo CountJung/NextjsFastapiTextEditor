@@ -4,7 +4,7 @@ Frontend(Next.js) / Backend(FastAPI) 분리 구조의 로컬 개발 + Docker 배
 
 GitHub에 게시(공개/비공개 모두)해도 CI/도커/로컬 실행에 무리가 없도록 구성되어 있습니다.
 
-배포는 **Railway(자동 감지/자동 배포)** 를 우선 목표로 합니다.
+배포는 **시놀로지 NAS에서 Docker/Compose로 구동**하는 방식을 기준으로 정리합니다.
 
 ## 폴더 구조
 
@@ -37,12 +37,12 @@ npm run dev
 
 확인: `http://localhost:3001`
 
-## Railway 배포(요약)
+## NAS(시놀로지) 배포(요약)
 
-- CI: PR/Push 시 `frontend-ci`, `backend-ci`가 자동 실행됩니다.
-- Railway: GitHub 연동 후 push를 감지하여 서비스가 자동 배포됩니다.
+- 권장: NAS에서 `docker compose up -d`로 프론트/백을 함께 운영
+- 옵션: GitHub Actions로 GHCR에 이미지를 올려 NAS에서 `docker compose pull`로 운영
 
-자세한 절차는 [docs/RAILWAY_DEPLOY.md](docs/RAILWAY_DEPLOY.md) 참고.
+자세한 절차는 [docs/GITHUB_PUBLISH.md](docs/GITHUB_PUBLISH.md) 참고.
 
 ## Docker Compose
 
@@ -52,7 +52,6 @@ docker compose up --build
 
 참고: 백엔드 Docker 이미지는 NAS(리눅스)에서 HWP 텍스트 추출(`pyhwp`/`hwp5txt`)이 가능하도록 기본 세팅되어 있습니다.
 
-- Frontend: `http://localhost:3000`
 - Frontend: `http://localhost:3001`
 - Backend: `http://localhost:8000/api/health`
 

@@ -32,7 +32,8 @@
 
 ## CI/CD (GitHub)
 - CI: `.github/workflows/frontend-ci.yml` (npm ci + build) and `.github/workflows/backend-ci.yml` (ruff + pytest).
-- Deploy: Railway에서 GitHub 연동 후 push 감지로 자동 배포(모노레포라 서비스 2개로 분리 권장).
+- Deploy: 시놀로지 NAS에서 `docker-compose.yml`로 구동.
+  - 옵션: `.github/workflows/docker-ghcr.yml`를 수동 실행해 GHCR에 이미지를 푸시한 뒤 NAS에서 pull하여 운영.
 
 ## What not to assume
 - HWP/HWPX 변환은 오픈소스 기반으로 단계적으로 구현 중입니다.

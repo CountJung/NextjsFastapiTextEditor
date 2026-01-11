@@ -218,7 +218,7 @@ web-editor-backend/
 
 ### 8.3 GitHub 게시/이미지 배포(GHCR)
 
-- `main` 브랜치에 push 시 GHCR에 프론트/백 Docker 이미지를 자동 푸시
+- (옵션) GitHub Actions를 수동 실행하여 GHCR에 프론트/백 Docker 이미지를 푸시
 - Synology NAS는 해당 이미지를 pull하여 `docker-compose.yml`로 운영(환경변수로 API_BASE/CORS 제어)
 
 

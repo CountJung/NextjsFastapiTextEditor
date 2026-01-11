@@ -13,7 +13,7 @@ PR/Push 시 자동으로 빌드/테스트가 수행됩니다.
 
 워크플로: `.github/workflows/docker-ghcr.yml`
 
-- 트리거: `main` 브랜치 push 또는 수동 실행(workflow_dispatch)
+- 트리거: 수동 실행(workflow_dispatch)
 - 푸시되는 태그:
   - `ghcr.io/<OWNER>/<REPO>/web-editor-backend:latest`
   - `ghcr.io/<OWNER>/<REPO>/web-editor-frontend:latest`
@@ -29,6 +29,8 @@ PR/Push 시 자동으로 빌드/테스트가 수행됩니다.
 1) NAS에서 `docker login ghcr.io`
 2) compose 파일에서 이미지 이름을 GHCR로 지정
 3) `docker compose pull` 후 `docker compose up -d`
+
+또는, GHCR을 쓰지 않고 NAS에서 직접 `docker compose up -d --build`로 빌드/실행할 수도 있습니다.
 
 환경변수 예시:
 
